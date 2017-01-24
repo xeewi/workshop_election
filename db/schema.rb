@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124122927) do
+ActiveRecord::Schema.define(version: 20170124125918) do
 
   create_table "candidats", force: :cascade do |t|
     t.integer "user_id"
@@ -37,14 +37,15 @@ ActiveRecord::Schema.define(version: 20170124122927) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.string "birthdate"
-    t.string "email"
-    t.string "address"
-    t.string "zipcode"
-    t.string "city"
-    t.string "picture"
+    t.string  "name"
+    t.string  "surname"
+    t.string  "birthdate"
+    t.string  "email"
+    t.string  "address"
+    t.string  "zipcode"
+    t.string  "city"
+    t.string  "picture"
+    t.integer "level"
   end
 
   create_table "votes", force: :cascade do |t|
