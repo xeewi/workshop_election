@@ -16,3 +16,11 @@
 
 
  @import "bootstrap";
+
+ .jumbotron {
+    background-image: url(https://static.pexels.com/photos/167699/pexels-photo-167699.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    margin-top: 55px;
+}
