@@ -16,3 +16,32 @@
 
 
  @import "bootstrap";
+
+
+
+.front-nav {
+    background: #192e43 !important;
+}
+ .jumbotron {
+    background-image: url(https://static.pexels.com/photos/167699/pexels-photo-167699.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    margin-top: 55px;
+    border-radius: 0;
+    margin-bottom: 0;
+
+    h1 {
+        font-size: 4.5em;
+        color : white;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+}
+
+.color-white {
+    color: #FFF;
+}
