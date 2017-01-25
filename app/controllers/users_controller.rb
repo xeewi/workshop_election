@@ -7,11 +7,13 @@ class UsersController < ApplicationController
 
   def selfcreate
      
-    render plain: params[:user].inspect
+    # render plain: params[:user].inspect
     @user = User.new(user_param)
 
     if @user.save
-          redirect_to :home
+        toUrl = request.original_url
+            UserMailer.create_password_email(@user, toUrl).deliver_now
+            redirect_to :home
       else
           render 'inscription'
     end

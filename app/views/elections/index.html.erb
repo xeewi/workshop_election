@@ -9,23 +9,18 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <div class="card" style="margin-top:30px;">
-                <div class="card-block" >
-                    <h4 class="card-title">Élection présidentielle de 2017 <span class="badge badge-default">Nouveau</span></h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Nationnal</h6>
-                    <p class="card-text">Les votes débutent le dimanche 10 avril à 00h et ferment le dimache 10 avril à 20h</p>
-                    <a href="#" class="card-link">Décourvir les candidats</a>
-                </div>
-            </div>
+        <% @elections.each do |election| %>
 
-             <div class="card" style="margin-top:30px;">
-                <div class="card-block">
-                    <h4 class="card-title">Élection primaire</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Nationnal</h6>
-                    <p class="card-text">Les votes débutent le dimanche 10 avril à 00h et ferment le dimache 10 avril à 20h</p>
-                    <a href="#" class="card-link">Décourvir les candidats</a>
-                </div>
+        <div class="card" style="margin-top:30px;">
+            <div class="card-block" >
+                <h4 class="card-title"><%= election.name%><span class="badge badge-default">Nouveau</span></h4>
+                <h6 class="card-subtitle mb-2 text-muted">Nationnal</h6>
+                <p class="card-text">Les votes débutent le <%= election.begin %> et ferment le <%= election.end %></p>
+                <a href="#" class="card-link">Décourvir les candidats</a>
             </div>
+        </div>
+
+        <% end %>
 
         </div>
     </div>
