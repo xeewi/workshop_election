@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def selfcreate
-     
     # render plain: params[:user].inspect
     @user = User.new(user_param)
 
