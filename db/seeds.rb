@@ -14,3 +14,8 @@ elections = Election.create([
         end: '2017-04-02 06:00:00'
     }
 ])
+
+
+elections_type = ElectionsType.create([
+    name: 1
+])

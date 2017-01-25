@@ -14,6 +14,8 @@ class ElectionsController < ApplicationController
       parsedDate = DateTime.parse(stringDate)
       formattedDate =  l(parsedDate, format: '%B %d, in the year %Y in %H heure')
       election.end = formattedDate
+      
+      election.type = Election.joins("INNER JOIN elections_types ON elections_types.election_type_id = election.id")
     end
 
   end
