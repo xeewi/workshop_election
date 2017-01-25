@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170125000410) do
   create_table "candidats", force: :cascade do |t|
     t.integer "user_id"
     t.text    "description"
+    t.integer "election_id"
     t.text    "partie"
     t.text    "liste"
     t.text    "programme"

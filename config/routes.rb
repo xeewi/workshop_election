@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
 	get 'home/index', as: 'home'
 	get 'elections/index'
-	get 'candidats/index'
+
+	# GET /elections/:id/candidats/ (candidats#home)
+	get '/elections/:id/candidats/' => 'candidats#home'
+	
 	get 'users/index'
 
 	# Admins
