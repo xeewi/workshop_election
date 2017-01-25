@@ -17,5 +17,5 @@ elections = Election.create([
 
 
 elections_type = ElectionsType.create([
-    name: 1
+    name: 'Nationnal for testing'
 ])
