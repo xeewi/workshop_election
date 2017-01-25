@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+
 	root 'home#index'
 
-  get 'home/index'
+	get 'home/index'
+	get 'elections/index'
+	get 'candidats/index'
+	get 'users/index'
 
-  get 'elections/index'
+	# Admins
+	get 'admin/login'
+	post 'admin/login' => 'admin#auth'
+	get 'admin/logout' => 'admin#logout'
+	get 'admin' => 'home#admin'
 
-  get 'candidats/index'
-
-  get 'users/index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

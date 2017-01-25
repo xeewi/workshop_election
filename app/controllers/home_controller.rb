@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   end
 
   def admin
+  	self.admin_connected();
+
   	
   end
 end
