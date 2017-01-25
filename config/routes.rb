@@ -7,11 +7,21 @@ Rails.application.routes.draw do
 	get 'candidats/index'
 	get 'users/index'
 
-	# Admins
-	get 'admin/login'
-	post 'admin/login' => 'admin#auth'
-	get 'admin/logout' => 'admin#logout'
-	get 'admin' => 'home#admin'
+	# Auth & dash 
+	get 'admin/login' #login
+	get 'admin/logout' => 'admin#logout' #logout
+	get 'admin' => 'home#admin' #dashboard
+
+	post 'admin/login' => 'admin#auth' #login request
+
+	# Users 
+	get 'admin/users' => 'users#index'
+	get 'admin/users/add' => 'users#add'
+	get 'admin/users/:id' => 'users#show'
+
+	post 'admin/users' => 'users#create'
+	patch 'admin/users/:id' => 'users#edit'
+	delete 'admin/users/:id' => 'users#delete'
 
 
   post 'users/', to: 'users#selfcreate'
