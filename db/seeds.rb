@@ -51,3 +51,76 @@ candidats = Candidat.create([
         programme: 'wid wid wid',
     }
 ])
+
+
+candidats_election = CandidatsElection.create([
+    {
+        candidat_id: 1,
+        election_id: 1
+    },
+    {
+        candidat_id: 2,
+        election_id: 1
+    },
+    {
+        candidat_id: 3,
+        election_id: 1
+    },
+    {
+        candidat_id: 4,
+        election_id: 1
+    }
+])
+
+
+user =  User.create([
+    {
+        name: "Bruno",
+        surname: "Le maire",
+        birthdate: "1994-02-12",
+        email: "email@email.com",
+        address: "Adresee du la rue de la ville",
+        zipcode: "77340",
+        city: "Porto-congo",
+        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        level: 0,
+        password: "5f4dcc3b5aa765d61d8327deb882cf99"
+    },
+    {
+        name: "Bruno 2",
+        surname: "Le maire",
+        birthdate: "1994-02-12",
+        email: "email@email.com",
+        address: "Adresee du la rue de la ville",
+        zipcode: "77340",
+        city: "Porto-congo",
+        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        level: 0,
+        password: "5f4dcc3b5aa765d61d8327deb882cf99"
+    },
+    {
+        name: "Bruno 3",
+        surname: "Le maire",
+        birthdate: "1994-02-12",
+        email: "email@email.com",
+        address: "Adresee du la rue de la ville",
+        zipcode: "77340",
+        city: "Porto-congo",
+        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        level: 0,
+        password: "5f4dcc3b5aa765d61d8327deb882cf99"
+    },
+    {
+        name: "Bruno 4",
+        surname: "Le maire",
+        birthdate: "1994-02-12",
+        email: "email@email.com",
+        address: "Adresee du la rue de la ville",
+        zipcode: "77340",
+        city: "Porto-congo",
+        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        level: 0,
+        password: "5f4dcc3b5aa765d61d8327deb882cf99"
+    }
+
+])
