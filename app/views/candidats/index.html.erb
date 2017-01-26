@@ -1,2 +1,62 @@
-<h1>Candidats#index</h1>
-<p>Find me in app/views/candidats/index.html.erb</p>
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "create" %>
+
+		<div class="alert alert-success" role="alert">
+		  <strong>Create ok !</strong> You successfully create a candidat.
+		</div>
+
+	<% elsif params['result'] == "delete" %>
+
+		<div class="alert alert-success" role="alert">
+		  <strong>Delete ok !</strong> You successfully delete a candidat.
+		</div>
+
+	<% end %>
+
+
+	<div class="page-header">
+	<a href="/admin/candidats/add" class="btn btn-primary float-right">Add candidat</a>
+	  	<h1>Candidats <small>| Index</small></h1>	
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item active">Candidats</li>
+	</ol>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>First Name</th>
+	      <th>Last Name</th>
+	      <th>Parti</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@candidats.blank? %>
+			<% @candidats.each do |candidat| %>
+		    <tr>
+		      <th scope="row"><%= candidat[0]['id'] %></th>
+		      <td><%= candidat[1]['name'] %></td>
+		      <td><%= candidat[1]['surname'] %></td>
+		      <td><%= candidat[0]['partie'] %></td>
+		      <td><a href="/admin/candidats/<%= candidat[0]['id'] %>" class="btn btn-sm btn-primary">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No user found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+
+	<%= will_paginate @tmps, class: "pagecenter" %>
+
+</div>
+

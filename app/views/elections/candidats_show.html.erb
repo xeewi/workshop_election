@@ -1,0 +1,62 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "user" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error !</strong> User not found.
+		</div>
+	<% elsif params['result'] == "candidat" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error !</strong> User not candidat.
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Elections Candidats <small>| Add a new election candidat</small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections">Elections</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections/<%= params['id'] %>">Elections</a></li>
+		<li class="breadcrumb-item active">Add election candidat</li>
+	</ol>
+
+	<form>
+		<div class="form-group">
+			<label for="election_id">Election ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="election_id" value="<%= params['id'] %>">	
+		</div>
+		<div class="form-group">
+			<label for="election_name">Election Name</label>
+			<input required="required" disabled type="text"  class="form-control" name="election_name" value="<%= @election['name'] %>">	
+		</div>	
+		<div class="form-group">
+			<label for="candidat_id">Candidat ID</label>
+			<input required="required" disabled type="number" class="form-control" name="candidat_id" value="<%= params['candidat_id'] %>">	
+		</div>
+		<div class="form-group">
+			<label for="name">Candidate Name</label>
+			<input required="required" disabled type="text" class="form-control" name="name" value="<%= @user['name'] %>">	
+		</div>
+		<div class="form-group">
+			<label for="surname">Candidate Surname</label>
+			<input required="required" disabled type="text" class="form-control" name="surname" value="<%= @user['surname'] %>">	
+		</div>		
+	</form>
+
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<%= form_tag "/admin/elections/"+ params['id'] +"/candidats/" + params['candidat_id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete election type</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= params['candidat_id'].to_s %>">
+		</div>
+	<% end %>
+</div>

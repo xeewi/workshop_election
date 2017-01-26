@@ -55,17 +55,71 @@
 	<% end %>
 
 	<hr>
-
+	<a href="/admin/elections/<%= params['id'] %>/candidats/add" class="btn btn-primary float-right">Add candidat</a>
 	<h2>Candidats</h2>
 
-	<% 	
-		split = @election['end'].split('-')
-		if Date.today > Date.new(split[0].to_i, split[1].to_i, split[2].to_i) 
-	%>
-	<hr>
-	
-	<h2>Results</h2>
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th>Surname</th>
+	      <th>Parti</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@candidats.blank? %>
+			<% @candidats.each do |candidat| %>
+		    <tr>
+		      <th scope="row"><%= candidat[2]['id'] %></th>
+		      <td><%= candidat[1]['name'] %></td>
+		      <td><%= candidat[1]['surname'] %></td>
+		      <td><%= candidat[0]['partie'] %></td>
+		      <td><a href="/admin/elections/<%= params['id'] %>/candidats/<%= candidat[2]['id'] %>" class="btn btn-sm btn-primary">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No candidats found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
+	<% if defined?(@votes) %>
+	<hr>
+		
+	<h2>Votes results</h2>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>Candidate ID</th>
+	      <th>Name</th>
+	      <th>Parti</th>
+	      <th>%</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@votes.blank? %>
+			<% @votes.each do |votes| %>
+		    <tr>
+		      <th scope="row"><%= votes[0]['id'] %></th>
+		      <td><%= votes[1]['name'] %></td>
+		      <td><%= votes[0]['partie'] %></td>
+		      <td><%= votes[2] %></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No votes found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
 	<% end %>
 	
 	<hr>

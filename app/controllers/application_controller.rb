@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  WillPaginate.per_page = 10
 
   def current_user
     @_current_user ||= session[:current_user_id] &&
