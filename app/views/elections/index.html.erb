@@ -1,27 +1,94 @@
-<%= render 'layouts/header' %> 
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
 
-<div class="jumbotron" style="height:300px;background-image:url(https://static.pexels.com/photos/27812/pexels-photo-27812.jpg);">
-  <h1>Elections</h1>      
-  <p style="color:rgba(255, 255, 255, 0.82)">Trouvez la liste des élections à venir, n'oubliez pas de voter !</p>
+	<% if params['result'] == "create" %>
+
+		<div class="alert alert-success" role="alert">
+		  <strong>Create ok !</strong> You successfully create an election.
+		</div>
+
+	<% elsif params['result'] == "delete" %>
+
+		<div class="alert alert-success" role="alert">
+		  <strong>Delete ok !</strong> You successfully delete an election.
+		</div>
+
+	<% end %>
+
+	<div class="page-header">
+	<a href="/admin/elections/add" class="btn btn-primary float-right">Add election</a>
+	<a href="/admin/elections/types/add" class="btn btn-info float-right mr-1">Add election type</a>
+	  	<h1>Elections <small>| Index</small></h1>	
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item active">Elections</li>
+	</ol>
+
+	<h2>Elections</h2>
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th>Begin</th>
+	      <th>End</th>
+	      <th>Type</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@elections.blank? %>
+			<% @elections.each do |election| %>
+		    <tr>
+		      <th scope="row"><%= election['id'] %></th>
+		      <td><%= election['name'] %></td>
+		      <td><%= election['begin'] %></td>
+		      <td><%= election['end'] %></td>
+		      <td><%= election['category'] %></td>
+		      <td><a href="/admin/elections/<%= election['id'] %>" class="btn btn-sm btn-primary">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No election found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+
+	<%= will_paginate @elections, class: "pagecenter" %>
+
+	<hr>
+
+	<h3>Elections types</h3>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@types.blank? %>
+			<% @types.each do |type| %>
+		    <tr>
+		      <th scope="row"><%= type['id'] %></th>
+		      <td><%= type['name'] %></td>
+		      <td><a href="/admin/elections/types/<%= type['id'] %>" class="btn btn-sm btn-info">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No election found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
 </div>
 
-<div class="container" >
-    <div class="row">
-        <div class="col-sm-12">
-
-        <% @elections.each do |election| %>
-
-        <div class="card" style="margin-top:30px;">
-            <div class="card-block" >
-                <h4 class="card-title"><%= election.name%><span class="badge badge-default">Nouveau</span></h4>
-                <h6 class="card-subtitle mb-2 text-muted">Nationnal</h6>
-                <p class="card-text">Les votes débutent le <%= election.begin %> et ferment le <%= election.end %></p>
-                <a href="#" class="card-link">Décourvir les candidats</a>
-            </div>
-        </div>
-
-        <% end %>
-
-        </div>
-    </div>
-</div>

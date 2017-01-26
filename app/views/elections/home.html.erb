@@ -1,0 +1,27 @@
+<%= render 'layouts/header' %> 
+
+<div class="jumbotron" style="height:300px;background-image:url(https://static.pexels.com/photos/27812/pexels-photo-27812.jpg);">
+  <h1>Elections</h1>      
+  <p style="color:rgba(255, 255, 255, 0.82)">Trouvez la liste des élections à venir, n'oubliez pas de voter !</p>
+</div>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-sm-12">
+
+        <% @elections.each do |election| %>
+
+        <div class="card" style="margin-top:30px;">
+            <div class="card-block" >
+                <h4 class="card-title"><%= election.name%><span class="badge badge-default">Nouveau</span></h4>
+                <h6 class="card-subtitle mb-2 text-muted">Nationnal</h6>
+                <p class="card-text">Les votes débutent le <%= election.begin %> et ferment le <%= election.end %></p>
+                <a href="#" class="card-link">Décourvir les candidats</a>
+            </div>
+        </div>
+
+        <% end %>
+
+        </div>
+    </div>
+</div>

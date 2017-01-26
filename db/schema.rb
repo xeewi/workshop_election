@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125210923) do
+ActiveRecord::Schema.define(version: 20170126010528) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170125210923) do
     t.string  "name"
     t.string  "begin"
     t.string  "end"
-    t.integer "type"
+    t.integer "category"
   end
 
   create_table "elections_types", force: :cascade do |t|

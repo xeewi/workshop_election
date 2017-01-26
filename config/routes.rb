@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 	root 'home#index'
 
 	get 'home/index', as: 'home'
-	get 'elections/index'
+	get 'elections/home'
 	get 'candidats/index'
 	get 'users/index'
+	get 'users/inscription', as: 'inscription'
+
+	post 'users/', to: 'users#selfcreate'
 
 	# Admin Auth 
 	get 'admin/login'
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
 	post 'admin/login' => 'admin#auth'
 
 	# Admin dashboard
-	get 'admin' => 'home#admin' #dashboard
+	get 'admin' => 'home#admin'
 
 	# Admin Users 
 	get 'admin/users' => 'users#index'
@@ -24,6 +27,23 @@ Rails.application.routes.draw do
 	post 'admin/users' => 'users#create'
 	patch 'admin/users/:id' => 'users#edit'
 	delete 'admin/users/:id' => 'users#delete'
+
+	# Admin Elections
+	get 'admin/elections' => 'elections#index'
+	get 'admin/elections/add' => 'elections#add'
+	get 'admin/elections/:id' => 'elections#show'
+
+	post 'admin/elections' => 'elections#create'
+	patch 'admin/elections/:id' => 'elections#edit'
+	delete 'admin/elections/:id' => 'elections#delete'	
+
+	# Admin Elections types
+	get 'admin/elections/types/add' => 'elections#types_add'
+	get 'admin/elections/types/:id' => 'elections#types_show'
+
+	post 'admin/elections/types' => 'elections#types_create'
+	patch 'admin/elections/types/:id' => 'elections#types_edit'
+	delete 'admin/elections/types/:id' => 'elections#types_delete'	
 
 	# Admin Admins
 	get 'admin/admins' => 'admin#index'
@@ -35,10 +55,6 @@ Rails.application.routes.draw do
 	patch 'admin/admins/password/:id' => 'admin#edit_password'
 	delete 'admin/admins/:id' => 'admin#delete'	
 
-
-  post 'users/', to: 'users#selfcreate'
-
-  get 'users/inscription', as: 'inscription'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

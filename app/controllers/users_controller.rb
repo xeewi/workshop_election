@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     self.admin_connected();
   end
 
+  def add_types
+    self.admin_connected();
+  end
+
   def create
     self.admin_connected();
     User.create(name: params['name'], surname: params['surname'], birthdate: params['birthdate'], email: params['email'], password: params['password'], city: params['city'], zipcode: params['zipcode'] )    

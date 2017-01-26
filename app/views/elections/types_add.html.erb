@@ -1,0 +1,24 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<div class="page-header">
+	  	<h1>Elections Types <small>| Create a new election type</small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections">Elections</a></li>
+		<li class="breadcrumb-item active">Add election type</li>
+	</ol>
+
+	<%= form_tag "/admin/elections/types", method: "post", class: "card-block" do %>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="name" value="<%= params['name'] %>">	
+		</div>			
+		<div class="form-group">
+			<input type="submit" value="Add election type" class="btn btn-info">			
+		</div>		
+
+	<% end %>
+</div>

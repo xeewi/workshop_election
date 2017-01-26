@@ -1,0 +1,40 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<div class="page-header">
+	  	<h1>Elections <small>| Create a new election</small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections">Elections</a></li>
+		<li class="breadcrumb-item active">Add</li>
+	</ol>
+
+	<%= form_tag "/admin/elections", method: "post", class: "card-block" do %>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="name" value="<%= params['name'] %>">	
+		</div>
+		<div class="form-group">
+			<label for="begin">Begin</label>
+			<input required="required" type="date"  class="form-control" name="begin" value="<%= params['begin'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="end">End</label>
+			<input required="required" type="date"  class="form-control" name="end" value="<%= params['end'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="begin">Type</label>
+			<select name="category" class="custom-select">
+				<% @types.each do |type| %>
+				<option value="<%= type['id'] %>"><%= type['name'] %></option>
+				<% end %>
+			</select>			
+		</div>			
+		<div class="form-group">
+			<input type="submit" value="Add election" class="btn btn-primary">			
+		</div>		
+
+	<% end %>
+</div>
