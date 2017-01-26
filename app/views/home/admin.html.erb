@@ -1,1 +1,76 @@
 <%= render 'layouts/header_admin_connected' %> 
+
+<div class="container mt-4">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title text-primary">Last users</h3>
+        <div class="card-text">
+        	<table class="table mt-4">
+			  <thead>
+			    <tr class="text-primary">
+			      <th>ID</th>
+			      <th>Name</th>
+			      <th>See more</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				<% if !@users.blank? %>
+					<% @users.each do |user| %>
+				    <tr>
+				      <th scope="row"><%= user['id'] %></th>
+				      <td><%= user['name'] %></td>
+				      <td><a href="/admin/users/<%= user['id'] %>" class="btn btn-sm btn-info">Click</a></td>
+				    </tr>
+					<% end %>
+				<% else %>
+				    <tr>
+				      <th scope="row">0</th>
+				      <td>No user found</td>
+				    </tr>
+				<% end %>
+			  </tbody>
+			</table>
+        </div>
+        <a href="/admin/users" class="btn btn-primary">Go to users</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title text-success">Last elections</h3>
+        <div class="card-text">
+        	<table class="table mt-4">
+			  <thead>
+			    <tr class="text-success">
+			      <th>ID</th>
+			      <th>Name</th>
+			      <th>See more</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				<% if !@elections.blank? %>
+					<% @elections.each do |user| %>
+				    <tr>
+				      <th scope="row"><%= user['id'] %></th>
+				      <td><%= user['name'] %></td>
+				      <td><a href="/admin/elections/<%= user['id'] %>" class="btn btn-sm btn-info">Click</a></td>
+				    </tr>
+					<% end %>
+				<% else %>
+				    <tr>
+				      <th scope="row">0</th>
+				      <td>No election found</td>
+				    </tr>
+				<% end %>
+			  </tbody>
+			</table>
+        </div>
+        <a href="/admin/elections" class="btn btn-success">Go to elections</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
