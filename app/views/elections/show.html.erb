@@ -1,0 +1,141 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this election type.
+		</div>
+	<% elsif params['result'] == "false" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error !</strong>
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Elections <small>| Details : <%= @election['id'].to_s %></small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections">Elections</a></li>
+		<li class="breadcrumb-item active">Election details</li>
+	</ol>
+
+	<%= form_tag "/admin/elections/" + @election['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group disabled">
+			<label for="name">ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="name" value="<%= @election['id'] %>">
+		</div>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="name" value="<%= @election['name'] %>">	
+		</div>
+		<div class="form-group">
+			<label for="begin">Begin</label>
+			<input required="required" type="date"  class="form-control" name="begin" value="<%= @election['begin'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="end">End</label>
+			<input required="required" type="date"  class="form-control" name="end" value="<%= @election['end'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="begin">Type</label>
+			<select name="category" class="custom-select">
+				<% @types.each do |type| %>
+				<option <% if type['id'] == @election['category'] %> selected <% end %>
+				value="<%= type['id'] %>">
+					<%= type['name'] %>
+				</option>
+				<% end %>
+			</select>			
+		</div>			
+		<div class="form-group">
+			<input type="submit" value="Edit election type" class="btn btn-warning">			
+		</div>		
+	<% end %>
+
+	<hr>
+	<a href="/admin/elections/<%= params['id'] %>/candidats/add" class="btn btn-primary float-right">Add candidat</a>
+	<h2>Candidats</h2>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th>Surname</th>
+	      <th>Parti</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@candidats.blank? %>
+			<% @candidats.each do |candidat| %>
+		    <tr>
+		      <th scope="row"><%= candidat[2]['id'] %></th>
+		      <td><%= candidat[1]['name'] %></td>
+		      <td><%= candidat[1]['surname'] %></td>
+		      <td><%= candidat[0]['partie'] %></td>
+		      <td><a href="/admin/elections/<%= params['id'] %>/candidats/<%= candidat[2]['id'] %>" class="btn btn-sm btn-primary">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No candidats found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+
+	<% if defined?(@votes) %>
+	<hr>
+		
+	<h2>Votes results</h2>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>Candidate ID</th>
+	      <th>Name</th>
+	      <th>Parti</th>
+	      <th>%</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@votes.blank? %>
+			<% @votes.each do |votes| %>
+		    <tr>
+		      <th scope="row"><%= votes[0]['id'] %></th>
+		      <td><%= votes[1]['name'] %></td>
+		      <td><%= votes[0]['partie'] %></td>
+		      <td><%= votes[2] %></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No votes found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+	<% end %>
+	
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<%= form_tag "/admin/elections/" + @election['id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete election</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= @election['id'].to_s %>">
+		</div>
+	<% end %>
+
+</div>
+</div>

@@ -1,0 +1,56 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this election type.
+		</div>
+	<% elsif params['result'] == "false" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error !</strong>
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Elections Types <small>| Details : <%= @type['id'].to_s %></small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/elections">Elections</a></li>
+		<li class="breadcrumb-item active">Election type details</li>
+	</ol>
+
+	<%= form_tag "/admin/elections/types/" + @type['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group disabled">
+			<label for="name">ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="name" value="<%= @type['id'] %>">
+		</div>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="name" value="<%= @type['name'] %>">			
+		</div>		
+		<div class="form-group">
+			<input type="submit" value="Edit election type" class="btn btn-warning">			
+		</div>		
+	<% end %>
+
+
+
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<%= form_tag "/admin/elections/types/" + @type['id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete election type</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= @type['id'].to_s %>">
+		</div>
+	<% end %>
+
+</div>
+</div>

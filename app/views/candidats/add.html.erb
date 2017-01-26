@@ -1,0 +1,47 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "user" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error</strong> User not found
+		</div>
+	<% end %>
+
+
+	<div class="page-header">
+	  	<h1>Candidats <small>| Create a new candidat</small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/candidats">Candidats</a></li>
+		<li class="breadcrumb-item active">Add</li>
+	</ol>
+
+	<%= form_tag "/admin/candidats", method: "post", class: "card-block" do %>
+		<div class="form-group">
+			<label for="email">User email</label>
+			<input required="required" type="email"  class="form-control" name="email" value="<%= params['email'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="partie">Parti</label>
+			<input required="required" type="text"  class="form-control" name="partie" value="<%= params['partie'] %>">
+		</div>
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea class="form-control" name="description"></textarea>			
+		</div>
+		<div class="form-group">
+			<label for="liste">Liste</label>
+			<textarea class="form-control" name="liste"></textarea>			
+		</div>
+		<div class="form-group">
+			<label for="programme">Programme</label>
+			<textarea class="form-control" name="programme"></textarea>			
+		</div>			
+		<div class="form-group">
+			<input type="submit" value="Add candidat" class="btn btn-primary">			
+		</div>		
+
+	<% end %>
+</div>

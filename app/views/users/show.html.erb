@@ -1,0 +1,75 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this user.
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Users <small>| Details : <%= @user['id'].to_s %></small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+		<li class="breadcrumb-item active">Details</li>
+	</ol>
+
+	<%= form_tag "/admin/users/" + @user['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group disabled">
+			<label for="name">ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="name" value="<%= @user['id'] %>">
+		</div>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="name" value="<%= @user['name'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="surname">Surname</label>
+			<input required="required" type="text"  class="form-control" name="surname" value="<%= @user['surname'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="birthdate">Birthdate</label>
+			<input required="required" type="date"  class="form-control" name="birthdate" value="<%= @user['birthdate'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input required="required" type="email"  class="form-control" name="email" value="<%= @user['email'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input required="required" type="password"  class="form-control" name="password" value="<%= @user['password'] %>">			
+		</div>		
+		<div class="form-group">
+			<label for="city">City</label>
+			<input required="required" type="text"  class="form-control" name="city" value="<%= @user['city'] %>">			
+		</div>		
+		<div class="form-group">
+			<label for="zipcode">Zipcode</label>
+			<input required="required" type="text"  class="form-control" name="zipcode" value="<%= @user['zipcode'] %>">			
+		</div>		
+		<div class="form-group">
+			<input type="submit" value="Edit user" class="btn btn-warning">			
+		</div>		
+
+	<% end %>
+
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<%= form_tag "/admin/users/" + @user['id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete user</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= @user['id'].to_s %>">
+		</div>
+	<% end %>
+
+</div>
+</div>

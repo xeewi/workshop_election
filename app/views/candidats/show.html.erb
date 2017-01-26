@@ -1,0 +1,112 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this Candidat.
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Candidat <small>| Details : <%= @candidat['id'].to_s %></small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/candidats">Candidats</a></li>
+		<li class="breadcrumb-item active">Details</li>
+	</ol>
+
+	<%= form_tag "/admin/candidats/" + @candidat['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group disabled">
+			<label for="name">ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="name" value="<%= @candidat['id'] %>">
+		</div>
+		<% if !@user.blank? %>
+		<div class="form-group">
+			<label for="user_id">User ID</label>
+			<input required="required" disabled type="text"  class="form-control" name="user_id" value="<%= @user['id'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" disabled type="text"  class="form-control" name="name" value="<%= @user['name'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="surname">Surname</label>
+			<input required="required" disabled type="text"  class="form-control" name="surname" value="<%= @user['surname'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input required="required" type="email" disabled class="form-control" name="email" value="<%= @user['email'] %>">			
+		</div>
+		<% end %>
+		<div class="form-group">
+			<label for="partie">Parti</label>
+			<input required="required" type="text"  class="form-control" name="partie" value="<%= @candidat['partie'] %>">			
+		</div>
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea class="form-control" name="description"><%= @candidat['description'] %></textarea>			
+		</div>
+		<div class="form-group">
+			<label for="liste">Liste</label>
+			<textarea class="form-control" name="liste"><%= @candidat['liste'] %></textarea>			
+		</div>
+		<div class="form-group">
+			<label for="programme">Programme</label>
+			<textarea class="form-control" name="programme"><%= @candidat['programme'] %></textarea>			
+		</div>			
+		<div class="form-group">
+			<input type="submit" value="Edit candidat" class="btn btn-warning">			
+		</div>		
+
+	<% end %>
+
+	<% if defined?(@elections) %>
+	<hr>
+	<h2>Elections</h2>
+
+	<table class="table mt-4">
+	  <thead>
+	    <tr>
+	      <th>ID Election</th>
+	      <th>Election name</th>
+	      <th>See more</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% if !@elections.blank? %>
+			<% @elections.each do |election| %>
+		    <tr>
+		      <th scope="row"><%= election['id'] %></th>
+		      <td><%= election['name'] %></td>
+		      <td><a href="/admin/elections/<%= election['id'] %>" class="btn btn-sm btn-info">Click</a></td>
+		    </tr>
+			<% end %>
+		<% else %>
+		    <tr>
+		      <th scope="row">0</th>
+		      <td>No election found</td>
+		    </tr>
+		<% end %>
+	  </tbody>
+	</table>
+	<% end %>
+
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<%= form_tag "/admin/candidats/" + @candidat['id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete candidat</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= @candidat['id'].to_s %>">
+		</div>
+	<% end %>
+
+</div>
+</div>

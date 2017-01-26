@@ -1,0 +1,71 @@
+<%= render 'layouts/header_admin_connected' %> 
+<div class="container mt-4">
+
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this admin.
+		</div>
+	<% elsif params['result'] == "false" %>
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error !</strong>
+		</div>
+	<% end %>
+
+	<div class="page-header">
+	  	<h1>Admins <small>| Details : <%= @admin['id'].to_s %></small></h1>
+	</div>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="/admin">Home</a></li>
+		<li class="breadcrumb-item"><a href="/admin/admins">Admins</a></li>
+		<li class="breadcrumb-item active">Details</li>
+	</ol>
+
+	<%= form_tag "/admin/admins/" + @admin['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group disabled">
+			<label for="name">ID</label>
+			<input required="required" disabled type="number"  class="form-control" name="name" value="<%= @admin['id'] %>">
+		</div>
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input required="required" type="text"  class="form-control" name="username" value="<%= @admin['username'] %>">			
+		</div>		
+		<div class="form-group">
+			<input type="submit" value="Edit admin" class="btn btn-warning">			
+		</div>		
+	<% end %>
+
+
+
+	<hr>
+	
+	<h2 class="text-center">Danger zone</h2>
+
+	<hr>
+
+	<%= form_tag "/admin/admins/password/" + @admin['id'].to_s, method: "patch", class: "card-block" do %>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input required="required" type="password"  class="form-control" name="password" >
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Edit password" class="btn btn-warning">			
+		</div>		
+
+	<% end %>
+
+	<hr>
+
+	<%= form_tag "/admin/admins/" + @admin['id'].to_s, method: "delete", class: "card-block" do %>
+		<div class="form-group text-center">
+			<label>Check this box to delete admin</label>
+			<input type="checkbox" required="required" name="">
+		</div>
+		
+		<div class="form-group text-center">
+			<input class="btn btn-danger" type="submit" value="Delete <%= @admin['id'].to_s %>">
+		</div>
+	<% end %>
+
+</div>
+</div>
