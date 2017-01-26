@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   def index
     self.admin_connected();
     @users = User.order('id DESC').paginate(:page => params[:page])
-    @users2 = User.all
   end
 
   def show
@@ -39,21 +38,21 @@ class UsersController < ApplicationController
     self.admin_connected();
     User.create(name: params['name'], surname: params['surname'], birthdate: params['birthdate'], email: params['email'], password: params['password'], city: params['city'], zipcode: params['zipcode'] )    
 
-    redirect_to '/admin/users'
+    redirect_to '/admin/users' + '?result=create'
   end
 
   def edit
       self.admin_connected();
       User.find(params['id']).update name: params['name'], surname: params['surname'], birthdate: params['birthdate'], email: params['email'], password: params['password'], city: params['city'], zipcode: params['zipcode']    
       
-      redirect_to '/admin/users/' + params['id'].to_s
+      redirect_to '/admin/users/' + params['id'].to_s + '?result=ok'
   end
 
   def delete
     self.admin_connected();
     User.find(params['id']).delete
 
-    redirect_to '/admin/users/'
+    redirect_to '/admin/users/' + '?result=delete'
   end
 
   private

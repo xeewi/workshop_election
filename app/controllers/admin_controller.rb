@@ -29,4 +29,60 @@ class AdminController < ApplicationController
     redirect_to root_url
   end
 
+  # Admin 
+
+  def index
+    self.admin_connected();
+    @admins = Admin.order('id DESC').paginate(:page => params[:page])
+  end
+
+  def show
+    self.admin_connected();
+    @admin = Admin.find(params['id'])
+  end
+
+  def add
+    self.admin_connected();
+  end
+
+  def create
+    self.admin_connected();
+    Admin.create(username: params['username'], password: params['password'])    
+
+    redirect_to '/admin/admins' + '?result=create'
+  end
+
+  def edit
+    self.admin_connected();
+
+    if params['username'] == ""
+      redirect_to '/admin/admins/' + params['id'].to_s  + '?result=false'
+      return
+    end
+
+    Admin.find(params['id']).update username: params['username']
+    
+    redirect_to '/admin/admins/' + params['id'].to_s + '?result=ok'
+  end
+
+  def edit_password
+     self.admin_connected();
+    
+    if params['password'] == ""
+      redirect_to '/admin/admins/' + params['id'].to_s  + '?result=false'
+      return
+    end
+
+    Admin.find(params['id']).update password: params['password']
+    
+    redirect_to '/admin/admins/' + params['id'].to_s  + '?result=ok'  
+  end
+
+  def delete
+    self.admin_connected();
+    Admin.find(params['id']).delete
+
+    redirect_to '/admin/admins/' + '?result=delete'
+  end
+
 end

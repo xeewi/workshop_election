@@ -1,6 +1,12 @@
 <%= render 'layouts/header_admin_connected' %> 
 <div class="container mt-4">
 
+	<% if params['result'] == "ok" %>
+		<div class="alert alert-success" role="alert">
+		  <strong>Edit ok !</strong> You successfully edit this user.
+		</div>
+	<% end %>
+
 	<div class="page-header">
 	  	<h1>Users <small>| Details : <%= @user['id'].to_s %></small></h1>
 	</div>

@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 	get 'candidats/index'
 	get 'users/index'
 
-	# Auth & dash 
-	get 'admin/login' #login
-	get 'admin/logout' => 'admin#logout' #logout
+	# Admin Auth 
+	get 'admin/login'
+	get 'admin/logout' => 'admin#logout' 
+
+	post 'admin/login' => 'admin#auth'
+
+	# Admin dashboard
 	get 'admin' => 'home#admin' #dashboard
 
-	post 'admin/login' => 'admin#auth' #login request
-
-	# Users 
+	# Admin Users 
 	get 'admin/users' => 'users#index'
 	get 'admin/users/add' => 'users#add'
 	get 'admin/users/:id' => 'users#show'
@@ -22,6 +24,16 @@ Rails.application.routes.draw do
 	post 'admin/users' => 'users#create'
 	patch 'admin/users/:id' => 'users#edit'
 	delete 'admin/users/:id' => 'users#delete'
+
+	# Admin Admins
+	get 'admin/admins' => 'admin#index'
+	get 'admin/admins/add' => 'admin#add'
+	get 'admin/admins/:id' => 'admin#show'
+
+	post 'admin/admins' => 'admin#create'
+	patch 'admin/admins/:id' => 'admin#edit'
+	patch 'admin/admins/password/:id' => 'admin#edit_password'
+	delete 'admin/admins/:id' => 'admin#delete'	
 
 
   post 'users/', to: 'users#selfcreate'
