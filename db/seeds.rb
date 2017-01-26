@@ -12,7 +12,7 @@ elections = Election.create([
         name: 'Election présidentielle 2017',
         begin: '2017-04-02 06:00:00',
         end: '2017-04-02 06:00:00',
-        elections_type_id: 1
+        category: 1
     }
 ])
 

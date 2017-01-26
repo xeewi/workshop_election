@@ -2,7 +2,7 @@ class CandidatsController < ApplicationController
 	def home
 
 	@election = Election.find(params[:id])
-	@election.candidats = Candidat.where(["election_id = :election_id", { election_id: params[:id]}])
+	@election.candidats = Candidat.where(["election_id = :election_id or test = :test", { election_id: params[:id]}])
 
 	stringDate = @election.begin
 	parsedDate = DateTime.parse(stringDate)
