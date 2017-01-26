@@ -12,7 +12,7 @@ elections = Election.create([
         name: 'Election présidentielle 2017',
         begin: '2017-04-02 06:00:00',
         end: '2017-04-02 06:00:00',
-        type: '1'
+        elections_type_id: 1
     }
 ])
 
@@ -21,33 +21,33 @@ elections_type = ElectionsType.create([
     name: 'Nationnal for testing'
 ])
 
-# candidats = Candidat.create([ 
-#     {
-#         user_id: 1
-#         description: 'BLABLABLA lorem ipsum'
-#         partie: 'partie loin'
-#         liste: 'liste ?'
-#         programme: 'wid wid wid'
-#     }
-#     {
-#         user_id: 2
-#         description: 'BLABLABLA lorem ipsum'
-#         partie: 'partie loin'
-#         liste: 'liste ?'
-#         programme: 'wid wid wid'
-#     }
-#     {
-#         user_id: 3
-#         description: 'BLABLABLA lorem ipsum'
-#         partie: 'partie loin'
-#         liste: 'liste ?'
-#         programme: 'wid wid wid'
-#     }
-#     {
-#         user_id: 4
-#         description: 'BLABLABLA lorem ipsum'
-#         partie: 'partie loin'
-#         liste: 'liste ?'
-#         programme: 'wid wid wid'
-#     }
-# ])
+candidats = Candidat.create([ 
+    {
+        user_id: 1,
+        description: 'BLABLABLA lorem ipsum',
+        partie: 'partie loin',
+        liste: 'liste ?',
+        programme: 'wid wid wid',
+    },
+    {
+        user_id: 2,
+        description: 'BLABLABLA lorem ipsum',
+        partie: 'partie loin',
+        liste: 'liste ?',
+        programme: 'wid wid wid',
+    },  
+    {
+        user_id: 3,
+        description: 'BLABLABLA lorem ipsum',
+        partie: 'partie loin',
+        liste: 'liste ?',
+        programme: 'wid wid wid',
+    },  
+    {
+        user_id: 4,
+        description: 'BLABLABLA lorem ipsum',
+        partie: 'partie loin',
+        liste: 'liste ?',
+        programme: 'wid wid wid',
+    }
+])
