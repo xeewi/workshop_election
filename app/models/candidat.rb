@@ -1,6 +1,5 @@
 class Candidat < ActiveRecord::Base
-    has_many :candidats_election
-    has_many :election, :through => :candidats_election
-    has_many :user
-	attr_accessor :user
+    has_and_belongs_to_many :elections
+    belongs_to :user
+	# attr_accessor :user
 end

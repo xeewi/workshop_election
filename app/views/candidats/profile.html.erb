@@ -1,0 +1,35 @@
+<%= render 'layouts/header' %> 
+
+<div class="container" style="margin-top: 100px;">
+
+    <div class="row">
+
+        <%#<%= debug @election  %>
+        <%#<%= debug @candidat  %>
+
+        <p class="h4 election-title"><%= @election.name %></p>
+
+        <a href="#" class="btn btn-outline btn-lg btn-voter">Voter</a>
+
+        <div class="col-sm-12">
+            <div class="img-candidat" style="background-image: url(<%= @candidat.user.picture %>) "></div>
+        </div>
+
+        <div class="col-sm-12" style="text-align: center;margin-top: 30px;">
+            <div class="h2"><%= @candidat.user.name %> <span class="h6"> — <%= @candidat.user.surname %></span></div>
+            <p>
+                <%= @candidat.description %>
+            </p>
+        </div>
+
+        <div class="col-sm-12" style="margin-top:30px;">
+            <p class="h4"><%= @candidat.partie %> — <%= @candidat.liste %></p>
+        </div>
+
+        <div class="col-sm-12 candidat-programme" style="margin-top:30px;">
+            <p>
+                <%= @candidat.programme %>
+            </p>
+        </div>
+    </div>
+</div>

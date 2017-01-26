@@ -94,7 +94,7 @@ user =  User.create([
         address: "Adresee du la rue de la ville",
         zipcode: "77340",
         city: "Porto-congo",
-        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        picture: "https://images.pexels.com/photos/3192/woman-girl-beauty-mask.jpg?h=350&auto=compress",
         level: 0,
         password: "5f4dcc3b5aa765d61d8327deb882cf99"
     },
@@ -106,7 +106,7 @@ user =  User.create([
         address: "Adresee du la rue de la ville",
         zipcode: "77340",
         city: "Porto-congo",
-        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        picture: "https://images.pexels.com/photos/247295/pexels-photo-247295.jpeg?h=350&auto=compress&cs=tinysrgb",
         level: 0,
         password: "5f4dcc3b5aa765d61d8327deb882cf99"
     },
@@ -118,7 +118,7 @@ user =  User.create([
         address: "Adresee du la rue de la ville",
         zipcode: "77340",
         city: "Porto-congo",
-        picture: "https://images.pexels.com/photos/157967/portrait-woman-girl-blond-157967.jpeg?h=350&auto=compress&cs=tinysrgb",
+        picture: "https://images.pexels.com/photos/160998/girl-nature-smile-beauty-160998.jpeg?h=350&auto=compress&cs=tinysrgb",
         level: 0,
         password: "5f4dcc3b5aa765d61d8327deb882cf99"
     }

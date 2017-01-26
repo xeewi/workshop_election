@@ -4,14 +4,15 @@ Rails.application.routes.draw do
 
 	get 'home/index', as: 'home'
 
-	get 'elections/' => 'elections#home'
-	# GET /elections/:id/candidats/ (candidats#home)
-	get '/elections/:id/candidats/' => 'candidats#home'
 	
 	get 'users/index'
 	get 'users/connexion' => 'users#signup'
   	get 'users/inscription', as: 'inscription'
  	post 'users/', to: 'users#selfcreate'
+
+	get 'elections/' => 'elections#home'
+	get '/elections/:id/candidats/' => 'candidats#home'
+	get '/elections/:id/candidats/:id_candidat' => 'candidats#profile'
   
 	# Admin Auth 
 	get 'admin/login'

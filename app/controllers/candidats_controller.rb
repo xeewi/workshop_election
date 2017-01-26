@@ -2,6 +2,7 @@ class CandidatsController < ApplicationController
 	def home
 
 	@election = Election.find(params[:id])
+	
 
 	stringDate = @election.begin
 	parsedDate = DateTime.parse(stringDate)
@@ -25,6 +26,11 @@ class CandidatsController < ApplicationController
 			user = User.find(tmp['user_id'])
 			@candidats << [tmp, user]
 		end
+	end
+
+	def profile
+		@election = Election.find(params[:id])
+		@candidat = Candidat.find(params[:id_candidat])
 	end
 
 	def show
