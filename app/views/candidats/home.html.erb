@@ -4,13 +4,14 @@
   <p style="color:rgba(255, 255, 255, 0.82);font-size: 1.3em;">Les votes débutent le <%= @election.begin %> et ferment le <%= @election.end %></p>
 </div>
 
-<%= debug @election.candidats %>
+
 <div class="container" >
     <p class="h2" style="margin:20px 0px">Candidats</p>
 
     <div class="row" style="border-top:1px solid grey">
         <div class="col-sm-12">
-        <% @election.candidats.each do |candidat| %>
+        <% @election.candidat.each do |candidat| %>
+        <%= debug candidat %>
         <div class="card" style="float:left;width:40%;margin:5%;">
             <div class="card-block" >
                 <h4 class="card-title"><span class="badge badge-default">Nouveau</span></h4>
