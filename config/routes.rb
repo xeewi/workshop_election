@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	get 'elections/' => 'elections#home'
 	get '/elections/:id/candidats/' => 'candidats#home'
 	get '/elections/:id/candidats/:id_candidat' => 'candidats#profile'
+  get '/elections/:id/candidats/:id_candidat/vote' => 'candidats#vote'
   
 	# Admin Auth 
 	get 'admin/login'

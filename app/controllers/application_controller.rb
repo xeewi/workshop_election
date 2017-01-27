@@ -20,4 +20,13 @@ class ApplicationController < ActionController::Base
   	end
 
   end
+
+  def user_connected
+  	@user = self.current_user();
+  	
+  	if !@user
+  		redirect_to "/users/connexion"
+  	end
+
+  end
 end
