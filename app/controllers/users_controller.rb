@@ -1,3 +1,4 @@
+require 'digest/md5'
 class UsersController < ApplicationController
 
     def index
@@ -11,15 +12,26 @@ class UsersController < ApplicationController
         @user = User.new(user_param)
 
         if @user.save
-        toUrl = request.original_url
-        UserMailer.create_password_email(@user, toUrl).deliver_now
-        redirect_to :home
+          toUrl = request.original_url
+          # UserMailer.create_password_email(@user, toUrl).deliver_now
+          redirect_to '/home/index?inscription=success'
         else
-        render 'inscription'
+          render '/users/inscription?err=incorrect'
         end
     end
 
-    def inscription
+    def select
+      
+      @user = User.find_by(email: params['email'])
+
+      if !@user
+        redirect_to "/users/connexion?err=user"
+      elsif @user.password == params['password']
+        session['current_user_id'] = @user.id
+        redirect_to "/home/index?login=success"
+      else
+        redirect_to "/users/connexion?err=user"
+      end
     end
 
   # Admin 
@@ -85,7 +97,7 @@ class UsersController < ApplicationController
 
     private
         def user_param
-            params.require(:user).permit(:name, :surname, :birthdate, :email, :address, :zipcode, :city)
+            params.require(:user).permit(:name, :surname, :birthdate, :email, :address, :zipcode, :city, :password)
         end
 
 

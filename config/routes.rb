@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 	get 'users/connexion' => 'users#signup'
   	get 'users/inscription', as: 'inscription'
  	post 'users/', to: 'users#selfcreate'
+	post '/users/connexion' => 'users#select'
+
 
 	get 'elections/' => 'elections#home'
 	get '/elections/:id/candidats/' => 'candidats#home'

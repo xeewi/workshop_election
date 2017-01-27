@@ -1,6 +1,9 @@
 <%= render 'layouts/header' %> 
 <div class="container" style="padding-top:60px">
 
+<% if params[:err] == "incorrect" %>
+        <div class="alert alert-success text-center" role="alert">Vos informations sont incorrect</div>
+<% end %>
     <div class="row">
         <div class="col-sm-8" style="margin:auto">
             <h2 class="text-center" style="margin:30px 0px">Inscription</h2>
@@ -22,6 +25,12 @@
                     <%= f.label :email , 'Email', class:"col-2 col-form-label"%>
                     <div class="col-10">
                         <%= f.email_field :email, class:"form-control"%>
+                    </div>
+                </div>
+                <div class="group-form row" style="margin-bottom:10px">
+                    <%= f.label :password , 'Mot de passe', class:"col-2 col-form-label"%>
+                    <div class="col-10">
+                        <%= f.password_field :password, class:"form-control"%>
                     </div>
                 </div>
                 <div class="group-form row" style="margin-bottom:10px">

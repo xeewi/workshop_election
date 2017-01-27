@@ -1,6 +1,9 @@
 <%= render 'layouts/header_admin_connected' %> 
 
 <div class="container mt-4">
+<% if params[:mess] == "success" %>
+        <div class="alert alert-danger text-center" role="alert">Connecté</div>
+<% end %>
 <div class="row">
   <div class="col-sm-6">
     <div class="card">

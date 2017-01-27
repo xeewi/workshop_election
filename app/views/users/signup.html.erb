@@ -1,10 +1,16 @@
 <%= render 'layouts/header' %> 
 <div class="container" style="padding-top:60px">
+ <% if params[:err] == "user" %>
+        <div class="alert alert-danger text-center" role="alert">Login ou mot de passe incorecte</div>
+<% end %>
+
+ 
 
     <div class="row">
+   
         <div class="col-sm-8" style="margin:auto">
             <h2 class="text-center" style="margin:30px 0px">Inscription</h2>
-            <%= form_for User.new do |f| %>
+            <%= form_for User.new , url: {action: "select"} do |f| %>
 
                 <div class="group-form row" style="margin-bottom:10px">
                     <%= f.label :email , 'Email', class:"col-2 col-form-label"%>
