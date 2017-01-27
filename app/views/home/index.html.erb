@@ -9,6 +9,10 @@
         <div class="alert alert-success text-center" role="alert">Merci pour votre inscription</div>
 <% end %>
 
+<% if params["login"] == "success" %>
+        <div class="alert alert-success text-center" role="alert">Connecté</div>
+<% end %>
+
   <div class="row" style="padding: 20px 40px;background-color: rgba(42, 68, 91, 0.75);">
     <div class="col-sm-8">
       <p class="h5 text-center color-white" style="margin-top: 10px;">Voulez vous légaliser la Marijuana ?</p>

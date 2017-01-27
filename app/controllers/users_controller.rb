@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     def selfcreate
         # render plain: params[:user].inspect
         @user = User.new(user_param)
+        @user.password = Digest::MD5.hexdigest(@user.password)
 
         if @user.save
           toUrl = request.original_url
@@ -21,17 +22,23 @@ class UsersController < ApplicationController
     end
 
     def select
-      
-      @user = User.find_by(email: params['email'])
+      param = params["user"]
+      @user = User.find_by(email: param['email'])
 
+      # render plain: param["password"].inspect
       if !@user
         redirect_to "/users/connexion?err=user"
-      elsif @user.password == params['password']
+      elsif @user.password ==  Digest::MD5.hexdigest(param['password'])
         session['current_user_id'] = @user.id
         redirect_to "/home/index?login=success"
       else
-        redirect_to "/users/connexion?err=user"
+        redirect_to "/users/connexion?err=pass"
       end
+    end
+
+    def signout
+      @user = session[:current_user_id] = nil
+      redirect_to root_url
     end
 
   # Admin 

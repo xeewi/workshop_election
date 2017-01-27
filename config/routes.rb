@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   	get 'users/inscription', as: 'inscription'
  	post 'users/', to: 'users#selfcreate'
 	post '/users/connexion' => 'users#select'
+	get '/users/deconnexion' => 'users#signout'
+
 
 
 	get 'elections/' => 'elections#home'

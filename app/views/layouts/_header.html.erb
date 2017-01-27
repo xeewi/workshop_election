@@ -17,12 +17,19 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
+        <% if session['current_user_id'] %>
+         <li class="nav-item">
+          <a class="nav-link" href="/users/deconnexion">Déconnexion</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
           <a class="nav-link" href="/users/inscription">Inscription</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/connexion">Connexion</a>
-        </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/connexion">Connexion</a>
+          </li>
+        <% end %>
+        
       </ul>
     </div>
   </nav>

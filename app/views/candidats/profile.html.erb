@@ -9,7 +9,7 @@
 
         <p class="h4 election-title"><%= @election.name %></p>
 
-        <a href="#" class="btn btn-outline btn-lg btn-voter">Voter</a>
+        <button type="button" class="btn btn-outline btn-lg btn-voter" data-toggle="modal" data-target="#myModal">Voter</button>
 
         <div class="col-sm-12">
             <div class="img-candidat" style="background-image: url(<%= @candidat.user.picture %>) "></div>
@@ -32,4 +32,44 @@
             </p>
         </div>
     </div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+         <% if session['current_user_id'] %>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Attention</h4>
+            </div>
+            <div class="modal-body">
+                <p>Vous vous appretez à voter pour <strong><%= @candidat.user.name %> <%= @candidat.user.surname %></strong></p>
+                <p>ête vous sure de votre choix ?</p>
+               
+            </div>
+            <div class="modal-footer">
+                 <a href="#" class="btn btn-outline btn-primary">Voter</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+            </div>
+            </div>
+        <% else %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Oups, vous n'êtes pas connecté !</h4>
+        </div>
+        <div class="modal-body">
+            <p>Vous devez être connecté pour voter</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">D'accord</button>
+        </div>
+        </div>
+        <% end %>
+        
+
+  </div>
 </div>
