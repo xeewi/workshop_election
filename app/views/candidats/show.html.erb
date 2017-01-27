@@ -77,11 +77,13 @@
 	  <tbody>
 		<% if !@elections.blank? %>
 			<% @elections.each do |election| %>
-		    <tr>
-		      <th scope="row"><%= election['id'] %></th>
-		      <td><%= election['name'] %></td>
-		      <td><a href="/admin/elections/<%= election['id'] %>" class="btn btn-sm btn-info">Click</a></td>
-		    </tr>
+				<% if !election.blank? %>
+			    <tr>
+			      <th scope="row"><%= election['id'] %></th>
+			      <td><%= election['name'] %></td>
+			      <td><a href="/admin/elections/<%= election['id'] %>" class="btn btn-sm btn-info">Click</a></td>
+			    </tr>
+			    <% end %>
 			<% end %>
 		<% else %>
 		    <tr>

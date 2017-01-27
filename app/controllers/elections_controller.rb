@@ -78,14 +78,14 @@ class ElectionsController < ApplicationController
 
   def create
     self.admin_connected()
-    Election.create(name: params['name'], begin: params['begin'], end: params['end'], category: params['category'])    
+    Election.create(name: params['name'], begin: params['begin'], end: params['end'], category: params['category'], elections_type_id: params['category'])    
 
     redirect_to '/admin/elections' + '?result=create'
   end
 
   def edit
     self.admin_connected()
-    Election.find(params['id']).update name: params['name'], begin: params['begin'], end: params['end'], category: params['category']
+    Election.find(params['id']).update name: params['name'], begin: params['begin'], end: params['end'], category: params['category'], elections_type_id: params['category']
     
     redirect_to '/admin/elections/' + params['id'].to_s + '?result=ok'
   end

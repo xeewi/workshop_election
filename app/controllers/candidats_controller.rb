@@ -76,21 +76,26 @@ class CandidatsController < ApplicationController
 	def vote 
 		self.user_connected();
 		# verrify if user déja voté
-		@candidat_election = CandidatsElection.where(["election_id = :election_id", { election_id: params["election_id"] }])
+		candidat_election = CandidatsElection.where(["election_id = :election_id", { election_id: params["id"] }])
 		
-		# candidat_election.each do |f|
-		# 	vote = Vote.where(["user_id = :user_id AND candidat_election_id = :candidat_election_id", { user_id: session[:current_user_id], candidat_election_id: f.id}])
-		# 	if !vote.blank?
-		# 		# je vote pas
-		# 		redirect_to "/home/index?vote=deja"
-		# 	end
-		# end
+		voted = false
 
-		# # je vote 
-		# vote = Vote.create(user_id:  session[:current_user_id], candidat_election_id: candidat_election.id)
+		candidat_election.each do |f|
+			vote = Vote.where(["user_id = :user_id AND candidat_election_id = :candidat_election_id", { user_id: session[:current_user_id], candidat_election_id: f.id}])
+			if !vote.blank?
+				voted = true
+				
+			end
+		end
 
-		# # election candidat 
-		# # vote 
+		if voted == true
+			redirect_to "/home/index?vote=deja"
+		else
+			candidat = CandidatsElection.where(election_id: params['id']).where(candidat_id: params['id_candidat'])
+
+			Vote.create(user_id: session[:current_user_id], candidat_election_id: candidat[0]['id'])
+			redirect_to "/home/index?vote=success"
+		end
 
 	end
 
