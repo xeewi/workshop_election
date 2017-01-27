@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20170126151108) do
     t.string  "name"
     t.string  "begin"
     t.string  "end"
-    t.integer "category"
     t.integer "elections_type_id"
+    t.integer "category"
   end
 
   create_table "elections_types", force: :cascade do |t|

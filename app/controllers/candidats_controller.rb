@@ -73,4 +73,25 @@ class CandidatsController < ApplicationController
 		redirect_to '/admin/candidats/?result=delete'
 	end
 
+	def vote 
+		self.user_connected();
+		# verrify if user déja voté
+		@candidat_election = CandidatsElection.where(["election_id = :election_id", { election_id: params["election_id"] }])
+		
+		# candidat_election.each do |f|
+		# 	vote = Vote.where(["user_id = :user_id AND candidat_election_id = :candidat_election_id", { user_id: session[:current_user_id], candidat_election_id: f.id}])
+		# 	if !vote.blank?
+		# 		# je vote pas
+		# 		redirect_to "/home/index?vote=deja"
+		# 	end
+		# end
+
+		# # je vote 
+		# vote = Vote.create(user_id:  session[:current_user_id], candidat_election_id: candidat_election.id)
+
+		# # election candidat 
+		# # vote 
+
+	end
+
 end
